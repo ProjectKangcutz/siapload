@@ -24,4 +24,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/kartukeluargas/tambah', [KartuKeluargaController::class, 'tambahberkas'])->name('kartukeluarga.tambahberkas');
+Route::get('/kartukeluargas/upload', [KartuKeluargaController::class, 'uploadberkas'])->name('kartukeluarga.uploadberkas');
+Route::get('/kartukeluargas/carikk', [KartuKeluargaController::class, 'carikk'])->name('kartukeluarga.carikk');
 Route::resource('kartukeluargas', KartuKeluargaController::class);

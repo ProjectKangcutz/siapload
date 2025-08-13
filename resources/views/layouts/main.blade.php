@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Dashboard - SIUPLOAD</title>
   <meta content="" name="description">
@@ -41,7 +41,7 @@
   <!-- Webcam JS Script -->
   <script src="{{asset('js/jquery.min.js')}}"></script>
    <link href="{{asset('niceAdmin/assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
-  <script src="{{asset('js/webcam.min.js')}}"></script>
+ 
   <link rel="stylesheet" href="{{asset('js/bootstrap.min.css')}}" />
   <style type="text/css">
     @font-face /*perintah untuk memanggil font eksternal*/

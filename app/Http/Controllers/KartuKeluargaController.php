@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\KartuKeluarga;
+use App\Models\Berkas;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class KartuKeluargaController extends Controller
 {
@@ -27,6 +29,33 @@ class KartuKeluargaController extends Controller
         return view('kartukeluargas.create');
     }
 
+    public function tambahberkas()
+    {
+        return view('kartukeluargas.tambahberkas');
+    }
+
+    public function uploadberkas()
+    {
+        return view('kartukeluargas.uploadberkas');
+    }
+
+    public function carikk(Request $request)
+    {
+        $request->validate([
+            'no_kk' => 'required'
+        ]);
+        $no_kk = $request->get('no_kk');
+
+        $cari = KartuKeluarga::where('no_kk',$no_kk)->count();
+
+        if ($cari>0) {
+            return view('kartukeluargas.uploadberkas')->with('no_kk',$no_kk);
+        } else {
+            return view('kartukeluargas.tambahberkas')->with('no_kk',$no_kk);
+        }
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +64,44 @@ class KartuKeluargaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'no_kk' => 'required',
+            'doc' => 'required',
+            'file' => 'required|image|mimes:jpeg,png,jpg|max:200',
+        ]);
+
+        if($request->hasfile('file'))
+        {
+            // menyimpan data file yang diupload ke variabel $file
+            $file = $request->file('file');
+            $dok = $request->get('doc');
+            $nokk = $request->get('no_kk');
+            $tgl = Carbon::now()->format('dmYHi');
+            $nm = $dok.'-'.pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);;
+            $nama_file = $tgl."_".$nm.'.jpg';
+            $simpan = $request->file->storeAs('public/'.$nokk.'/', $nama_file);
+            $path = $nokk.'/'.$nama_file;
+            //Storage::put('public/dok/'.time().'_'.$nama_file);
+        }
+
+        $no_kk = $request->get('no_kk');
+        $cari = KartuKeluarga::where('no_kk',$no_kk)->count();
+        if ($cari>0) {
+            //
+        } else {
+            $data = KartuKeluarga::create([
+                'no_kk' => $request->no_kk,
+            ]);
+        }
+
+        $berkas = Berkas::create([
+            'doc' => 'Kartu Keluarga',
+            'identifikasi' => $no_kk,
+            'path' => $path
+        ]);
+        $files = Berkas::where('identifikasi',$no_kk)->where('doc','Kartu Keluarga')->get();
+        $i=0;
+        return view('kartukeluargas.uploadberkas',compact('no_kk','files','i'))->with('success','Berkas berhasil ditambahkan');
     }
 
     /**
