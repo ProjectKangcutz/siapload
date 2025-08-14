@@ -31,12 +31,14 @@ class KartuKeluargaController extends Controller
 
     public function tambahberkas()
     {
-        return view('kartukeluargas.tambahberkas');
+        $files = Berkas::where('identifikasi',$no_kk)->where('doc','Kartu Keluarga')->get();
+        return view('kartukeluargas.tambahberkas',compact('files'));
     }
 
     public function uploadberkas()
     {
-        return view('kartukeluargas.uploadberkas');
+        $files = Berkas::where('identifikasi',$no_kk)->where('doc','Kartu Keluarga')->get();
+        return view('kartukeluargas.uploadberkas',compact('files'));
     }
 
     public function carikk(Request $request)
@@ -47,11 +49,11 @@ class KartuKeluargaController extends Controller
         $no_kk = $request->get('no_kk');
 
         $cari = KartuKeluarga::where('no_kk',$no_kk)->count();
-
+        $files = Berkas::where('identifikasi',$no_kk)->where('doc','Kartu Keluarga')->get();
         if ($cari>0) {
-            return view('kartukeluargas.uploadberkas')->with('no_kk',$no_kk);
+            return view('kartukeluargas.uploadberkas',compact('files'))->with('no_kk',$no_kk);
         } else {
-            return view('kartukeluargas.tambahberkas')->with('no_kk',$no_kk);
+            return view('kartukeluargas.tambahberkas',compact('files'))->with('no_kk',$no_kk);
         }
         
     }
