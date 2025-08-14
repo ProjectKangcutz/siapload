@@ -16,7 +16,8 @@ class SkpwniController extends Controller
      */
     public function index()
     {
-        //
+        $data = Skpwni::latest()->get();
+        return view('skpwnis.index',compact('data'));
     }
 
     /**
@@ -100,9 +101,12 @@ class SkpwniController extends Controller
      * @param  \App\Models\skpwni  $skpwni
      * @return \Illuminate\Http\Response
      */
-    public function show(skpwni $skpwni)
+    public function show($id)
     {
-        //
+        $data = Skpwni::find($id);
+        $no_skpwni = $data->no_skpwni;
+        $files = Berkas::where('identifikasi',$no_skpwni)->where('doc','SKPWNI')->get();
+        return view('skpwnis.detail',compact('no_skpwni','files'));
     }
 
     /**
