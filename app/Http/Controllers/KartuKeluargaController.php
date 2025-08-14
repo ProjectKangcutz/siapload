@@ -82,8 +82,8 @@ class KartuKeluargaController extends Controller
             $tgl = Carbon::now()->format('dmYHi');
             $nm = $dok.'-'.pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);;
             $nama_file = $tgl."_".$nm.'.jpg';
-            $simpan = $request->file->storeAs('public/'.$nokk.'/', $nama_file);
-            $path = $nokk.'/'.$nama_file;
+            $simpan = $request->file->storeAs('public/kk/'.$nokk.'/', $nama_file);
+            $path = 'kk/'.$nokk.'/'.$nama_file;
             //Storage::put('public/dok/'.time().'_'.$nama_file);
         }
 

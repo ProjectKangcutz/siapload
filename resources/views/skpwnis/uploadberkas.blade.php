@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('top-content')
-<h1>Kartu Keluarga</h1>
+<h1>SKPWNI</h1>
 <nav>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-		<li class="breadcrumb-item active">Kartu Keluarga</li>
+		<li class="breadcrumb-item active">SKPWNI</li>
 	</ol>
 </nav>
 @endsection
@@ -32,10 +32,10 @@
 		@endif
 
 		<div class="card">
-			<div class="card-header">Kartu Keluarga</div>
+			<div class="card-header">SKPWNI</div>
 			<div class="card-body">
 
-@include('kartukeluargas.form_uploadReadonly')
+@include('skpwnis.form_uploadReadonly')
 
 				
 			</div>

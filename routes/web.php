@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KartuKeluargaController;
+use App\Http\Controllers\SkpwniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,8 @@ Route::get('/kartukeluargas/tambah', [KartuKeluargaController::class, 'tambahber
 Route::get('/kartukeluargas/upload', [KartuKeluargaController::class, 'uploadberkas'])->name('kartukeluarga.uploadberkas');
 Route::get('/kartukeluargas/carikk', [KartuKeluargaController::class, 'carikk'])->name('kartukeluarga.carikk');
 Route::resource('kartukeluargas', KartuKeluargaController::class);
+
+Route::get('/skpwnis/cariskpwni', [SkpwniController::class, 'cariskpwni'])->name('skpwni.cariskpwni');
+Route::get('/skpwnis/tambah', [SkpwniController::class, 'tambahberkas'])->name('skpwni.tambahberkas');
+Route::get('/skpwnis/upload', [SkpwniController::class, 'uploadberkas'])->name('skpwni.uploadberkas');
+Route::resource('skpwnis', SkpwniController::class);

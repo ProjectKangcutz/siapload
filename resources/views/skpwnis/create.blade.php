@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('top-content')
-<h1>Kartu Keluarga</h1>
+<h1>SKPWNI</h1>
 <nav>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-		<li class="breadcrumb-item active">Kartu Keluarga</li>
+		<li class="breadcrumb-item active">SKPWNI</li>
 	</ol>
 </nav>
 @endsection
@@ -32,10 +32,25 @@
 		@endif
 
 		<div class="card">
-			<div class="card-header">Kartu Keluarga</div>
+			<div class="card-header">SKPWNI</div>
 			<div class="card-body">
 
-@include('kartukeluargas.form_upload')
+				<form method="get" action="{{ route('skpwni.cariskpwni') }}">
+					@csrf
+					<div class="form-group row">
+						<label for="no_skpwni" class="col-3 col-form-label">No SKPWNI</label> 
+						<div class="col-7">
+							<input id="no_skpwni" name="no_skpwni" type="text" class="form-control" required="required">
+						</div>
+						
+						<div class="form-group row col-1">
+							<div class="offset-4">
+								<button name="submit" type="submit" class="btn btn-primary">Cari</button>
+							</div>
+						</div>
+					</div> 
+				</form>
+
 				
 			</div>
 		</div>
@@ -66,7 +81,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" type="text/javascript"></script>
-
-
 
 @endsection

@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('top-content')
-<h1>Kartu Keluarga</h1>
+<h1>SKPWNI</h1>
 <nav>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-		<li class="breadcrumb-item active">Kartu Keluarga</li>
+		<li class="breadcrumb-item active">SKPWNI</li>
 	</ol>
 </nav>
 @endsection
@@ -32,10 +32,10 @@
 		@endif
 
 		<div class="card">
-			<div class="card-header">Kartu Keluarga</div>
+			<div class="card-header">SKPWNI</div>
 			<div class="card-body">
 
-@include('kartukeluargas.form_upload')
+@include('skpwnis.form_upload')
 				
 			</div>
 		</div>
@@ -66,6 +66,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" type="text/javascript"></script>
+
+<script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.html5.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/buttons/3.1.2/js/buttons.print.min.js" type="text/javascript"></script>
 
 
 
