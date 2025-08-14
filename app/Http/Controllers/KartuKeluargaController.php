@@ -16,7 +16,8 @@ class KartuKeluargaController extends Controller
      */
     public function index()
     {
-        //
+        $data = KartuKeluarga::latest()->get();
+        return view('kartukeluargas.index',compact('data'));
     }
 
     /**
@@ -35,7 +36,7 @@ class KartuKeluargaController extends Controller
         return view('kartukeluargas.tambahberkas',compact('files'));
     }
 
-    public function uploadberkas()
+    public function uploadberkas($no_kk)
     {
         $files = Berkas::where('identifikasi',$no_kk)->where('doc','Kartu Keluarga')->get();
         return view('kartukeluargas.uploadberkas',compact('files'));
@@ -98,12 +99,12 @@ class KartuKeluargaController extends Controller
 
         $berkas = Berkas::create([
             'doc' => 'Kartu Keluarga',
+            'jenis' => $request->get('doc'),
             'identifikasi' => $no_kk,
             'path' => $path
         ]);
         $files = Berkas::where('identifikasi',$no_kk)->where('doc','Kartu Keluarga')->get();
-        $i=0;
-        return view('kartukeluargas.uploadberkas',compact('no_kk','files','i'))->with('success','Berkas berhasil ditambahkan');
+        return view('kartukeluargas.uploadberkas',compact('no_kk','files'))->with('success','Berkas berhasil ditambahkan');
     }
 
     /**
@@ -112,9 +113,12 @@ class KartuKeluargaController extends Controller
      * @param  \App\Models\KartuKeluarga  $kartuKeluarga
      * @return \Illuminate\Http\Response
      */
-    public function show(KartuKeluarga $kartuKeluarga)
+    public function show($id)
     {
-        //
+        $data = KartuKeluarga::find($id);
+        $no_kk = $data->no_kk;
+        $files = Berkas::where('identifikasi',$no_kk)->where('doc','Kartu Keluarga')->get();
+        return view('kartukeluargas.detail',compact('no_kk','files'));
     }
 
     /**

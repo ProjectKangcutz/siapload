@@ -11,6 +11,7 @@ class Berkas extends Model
 
     protected $fillable = [
         'doc',
+        'jenis',
         'identifikasi',
         'path'
     ];

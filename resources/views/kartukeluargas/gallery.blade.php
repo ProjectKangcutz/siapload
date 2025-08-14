@@ -9,34 +9,38 @@
                     <ul class="slides">
                       @foreach($files as $index => $berkas)
                       <li>
-                        <img src="{{ asset('storage/'.$berkas->path) }}" alt="Slide {{ $index+1 }}"/>
-                      </li>
-                      @endforeach
-                    </ul>
-                  </div>
-                  <div id="carousel" class="flexslider">
-                    <ul class="slides">
-                      @foreach($files as $index => $berkas)
-                      <li>
-                        <img src="{{ asset('storage/'.$berkas->path) }}" alt="Thumbnail {{ $index+1 }}"/>
-                      </li>
-                      @endforeach
+                       <div class="slider-label">
+                        Gambar {{ $index+1 }} - {{ $berkas->jenis ?? 'Tanpa Judul' }}
+                      </div>
+                      <img src="{{ asset('storage/'.$berkas->path) }}" width="100%" height="400px" alt="Slide {{ $index+1 }}"/>
 
-                    </ul>
-                  </div>
+                    </li>
+                    @endforeach
+                  </ul>
                 </div>
+                <div id="carousel" class="flexslider">
+                  <ul class="slides">
+                    @foreach($files as $index => $berkas)
+                    <li>
+                      <img src="{{ asset('storage/'.$berkas->path) }}" width="150px" height="100" alt="Thumbnail {{ $index+1 }}"/>
+                    </li>
+                    @endforeach
 
-              </div><!-- /.templatemo-content -->  
-            </div><!-- /.templatemo-content-wrapper --> 
-          </div><!-- /.row --> 
+                  </ul>
+                </div>
+              </div>
 
-          <div id="preloader">
-            <div id="status">&nbsp;</div>
-          </div><!-- /#preloader -->
+            </div><!-- /.templatemo-content -->  
+          </div><!-- /.templatemo-content-wrapper --> 
+        </div><!-- /.row --> 
 
-          <script src="{{asset('templatemo/js/jquery.min.js')}}"></script>
-          <script src="{{asset('templatemo/js/jquery.backstretch.min.js')}}"></script>
-          <script src="{{asset('templatemo/js/jquery.flexslider.min.js')}}"></script>
-          <script src="{{asset('templatemo/js/bootstrap.min.js')}}"></script>
-          <script src="{{asset('templatemo/js/templatemo_script.js')}}"></script>
-          <link rel="stylesheet" href="{{asset('templatemo/css/templatemo_main.css')}}">
+        <div id="preloader">
+          <div id="status">&nbsp;</div>
+        </div><!-- /#preloader -->
+
+        <script src="{{asset('templatemo/js/jquery.min.js')}}"></script>
+        <script src="{{asset('templatemo/js/jquery.backstretch.min.js')}}"></script>
+        <script src="{{asset('templatemo/js/jquery.flexslider.min.js')}}"></script>
+        <script src="{{asset('templatemo/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('templatemo/js/templatemo_script.js')}}"></script>
+        <link rel="stylesheet" href="{{asset('templatemo/css/templatemo_main.css')}}">

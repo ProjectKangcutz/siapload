@@ -8,7 +8,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="/kartukeluargas/create">
+        <a class="nav-link " href="/kartukeluargas">
           <i class="bi bi-pencil-square"></i>
           <span>Kartu Keluarga</span>
         </a>

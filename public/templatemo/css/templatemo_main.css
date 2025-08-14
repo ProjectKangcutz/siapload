@@ -212,6 +212,7 @@ img {  vertical-align: middle; }
 .flexslider li {
 	margin: 0;
 	padding: 0;
+    position: relative;
 }
 
 #carousel { margin: 0; }
@@ -291,4 +292,15 @@ img {  vertical-align: middle; }
         background: rgba(0,0,0,0.4);
         border: none;
     }
+}
+
+.slider-label {
+    position: absolute;
+    bottom: 50px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
 }
